@@ -1,0 +1,21 @@
+# .gitignore replace karo
+@"
+# Backend
+backend/node_modules
+backend/dist
+backend/logs
+backend/.env
+backend/generated
+backend/*.log
+
+# Frontend
+frontend/node_modules
+frontend/.env.local
+frontend/.next
+frontend/out
+
+# General
+.DS_Store
+*.log
+.env.docker
+"@ | Set-Content .gitignore
