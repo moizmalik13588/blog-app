@@ -1,0 +1,58 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect } from "react";
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
+  return (
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
+      <div className="text-center max-w-md">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 justify-center mb-12">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+            <span className="text-white font-bold text-sm">B</span>
+          </div>
+          <span className="font-semibold text-gray-900 text-[15px]">
+            BlogApp
+          </span>
+        </Link>
+
+        {/* 500 */}
+        <p className="text-[80px] font-bold text-gray-100 leading-none mb-2">
+          500
+        </p>
+        <h1 className="text-[24px] font-bold text-gray-900 mb-2 tracking-tight">
+          Something went wrong
+        </h1>
+        <p className="text-[15px] text-gray-500 mb-8">
+          An unexpected error occurred. Please try again.
+        </p>
+
+        <div className="flex items-center justify-center gap-3">
+          <button
+            onClick={reset}
+            className="h-10 px-6 bg-blue-600 hover:bg-blue-700 text-white text-[14px] font-medium rounded-xl transition-colors"
+          >
+            Try again
+          </button>
+          <Link
+            href="/"
+            className="h-10 px-6 border border-gray-200 hover:border-gray-300 text-gray-600 text-[14px] font-medium rounded-xl transition-colors"
+          >
+            Go home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
