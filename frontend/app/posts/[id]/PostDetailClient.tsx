@@ -25,6 +25,9 @@ interface Comment {
   userId: string;
   postId: string;
   createdAt: string;
+  user: {
+    username: string;
+  };
 }
 
 export default function PostDetailPage() {
@@ -255,7 +258,7 @@ export default function PostDetailPage() {
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-[13px] font-medium text-gray-700 dark:text-gray-300">
-                        User
+                        {comment.user?.username || "User"}
                       </span>
                       <span className="text-[12px] text-gray-400 dark:text-gray-500">
                         {new Date(comment.createdAt).toLocaleDateString(
