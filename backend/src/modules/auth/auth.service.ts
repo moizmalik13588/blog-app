@@ -76,9 +76,7 @@ export class AuthService {
     const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 min
     const hashedOTP = hashOTP(otp);
     await this.repo.createOTP(user.id, hashedOTP, expiresAt); // ← hashed save karo
-    await sendOTPEmail(user.email, otp); // ← plain bhejo email pe
-
-    // ✅ Email bhejo
+    // await sendOTPEmail(user.email, otp); // ← plain bhejo email pe
     await sendOTPEmail(user.email, otp);
 
     await logActivity(user.id, "LOGIN_OTP_SENT", ipAddress, userAgent);
