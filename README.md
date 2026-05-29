@@ -1,91 +1,121 @@
-# BlogApp 📝
+# PenCraft 📝
 
-A full-stack production-grade blog application built with **Node.js**, **Next.js**, **PostgreSQL**, and **TypeScript**.
+> A full-stack production-grade blog platform built with Next.js, Node.js, PostgreSQL, and TypeScript — deployed on AWS.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Node](https://img.shields.io/badge/node-20+-green.svg)
-![TypeScript](https://img.shields.io/badge/typescript-5.0+-blue.svg)
+[![Live](https://img.shields.io/badge/Live-pencraft.site-blue?style=flat-square)](https://pencraft.site)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-20-green?style=flat-square&logo=node.js)](https://nodejs.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 ---
 
 ## 🚀 Live Demo
 
-| Service | URL |
-|---------|-----|
-| Frontend | Coming soon |
-| Backend API | Coming soon |
-| API Docs (Swagger) | Coming soon |
+| Service               | URL                                                              |
+| --------------------- | ---------------------------------------------------------------- |
+| 🌐 Frontend           | [pencraft.site](https://pencraft.site)                           |
+| ⚙️ Backend API        | [api.pencraft.site](https://api.pencraft.site)                   |
+| 📖 API Docs (Swagger) | [api.pencraft.site/api-docs](https://api.pencraft.site/api-docs) |
 
 ---
 
-## 📸 Preview
+## 🏗️ Architecture
 
-> Screenshots will be added after deployment.
+```
+User
+ │
+ ├── pencraft.site (Vercel — Next.js 15)
+ │         │
+ │         ▼
+ └── api.pencraft.site (AWS EC2 — Express + Nginx + SSL)
+               │
+               ▼
+        AWS RDS PostgreSQL
+               │
+               ▼
+          Cloudinary (Images)
+          Resend (Emails)
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Backend
-| Technology | Purpose |
-|------------|---------|
-| Node.js + Express | REST API Server |
-| TypeScript | Type Safety |
-| PostgreSQL + Prisma | Database & ORM |
-| JWT + httpOnly Cookies | Authentication |
-| Bcrypt | Password Hashing |
-| SHA256 | Refresh Token Hashing |
-| Cloudinary | Image Storage |
-| Resend | Email Service (OTP, Alerts) |
-| Winston + Morgan | Logging |
-| Docker | Containerization |
-| Swagger UI | API Documentation |
-| Vitest | Unit Testing |
-| Zod | Request Validation |
-| express-rate-limit | Rate Limiting |
+
+| Technology             | Purpose                     |
+| ---------------------- | --------------------------- |
+| Node.js + Express      | REST API Server             |
+| TypeScript             | Type Safety                 |
+| PostgreSQL + Prisma    | Database & ORM              |
+| JWT + httpOnly Cookies | Authentication              |
+| Bcrypt                 | Password Hashing            |
+| SHA256                 | Refresh Token & OTP Hashing |
+| Cloudinary             | Image Storage & CDN         |
+| Resend                 | Email Service (OTP, Alerts) |
+| Winston + Morgan       | Structured Logging          |
+| Swagger UI             | API Documentation           |
+| Zod                    | Request Validation          |
+| express-rate-limit     | Rate Limiting               |
+| PM2                    | Process Management          |
 
 ### Frontend
-| Technology | Purpose |
-|------------|---------|
-| Next.js 15 (App Router) | React Framework |
-| TypeScript | Type Safety |
-| Tailwind CSS v4 | Styling |
-| shadcn/ui | UI Component Library |
-| Axios + Interceptors | HTTP Client & Token Refresh |
-| next-themes | Dark / Light Mode |
-| react-hot-toast | Toast Notifications |
+
+| Technology              | Purpose                     |
+| ----------------------- | --------------------------- |
+| Next.js 15 (App Router) | React Framework             |
+| TypeScript              | Type Safety                 |
+| Tailwind CSS v4         | Styling                     |
+| shadcn/ui               | UI Component Library        |
+| Axios + Interceptors    | HTTP Client & Token Refresh |
+| next-themes             | Dark / Light Mode           |
+| react-hot-toast         | Toast Notifications         |
+
+### Infrastructure
+
+| Service       | Purpose              |
+| ------------- | -------------------- |
+| AWS EC2       | Backend Server       |
+| AWS RDS       | PostgreSQL Database  |
+| Vercel        | Frontend Hosting     |
+| Nginx         | Reverse Proxy        |
+| Let's Encrypt | Free SSL Certificate |
+| Namecheap     | Custom Domain        |
 
 ---
 
 ## ✨ Features
 
 ### 🔐 Authentication & Security
-- Email OTP **Two-Factor Authentication (2FA)**
-- JWT Access Token (15 min) + Refresh Token (7 days)
-- **Token Rotation** — new refresh token on every use
-- **Reuse Detection** — force logout if stolen token is used
-- **httpOnly Cookies** — protected from XSS attacks
-- **Rate Limiting** — brute force protection on auth routes
-- Suspicious login **email alerts**
-- **Activity log** with IP address and device tracking
+
+- Email OTP Two-Factor Authentication (2FA)
+- JWT Access Token + Refresh Token with rotation
+- Reuse Detection — force logout if stolen token is used
+- httpOnly Cookies — protected from XSS attacks
+- Rate Limiting — brute force protection on auth routes
+- Suspicious login email alerts
+- Activity log with IP address and device tracking
 - Logout single device or all devices
 
 ### 📝 Blog
+
 - Create, Read, Update, Delete posts
-- **Image upload** via Cloudinary with automatic cleanup on delete
-- **Comments** system with owner validation
-- **Pagination** and **Search** on posts
+- Image upload via Cloudinary with automatic cleanup on delete
+- Comments system with ownership validation
+- Pagination and Search on posts
 - Owner-only edit and delete buttons
+- Author info on every post
 
 ### 🎨 Frontend
-- Modern, fully **responsive** UI (mobile + desktop)
-- **Dark / Light mode** with system preference detection
-- **Loading skeletons** for better UX
-- **Toast notifications** for success and error feedback
-- **SEO** meta tags and OpenGraph support
-- **Protected routes** via Next.js middleware
-- **Auto token refresh** via Axios interceptor
-- Custom **404** and **500** error pages
+
+- Modern, fully responsive UI (mobile + desktop)
+- Dark / Light mode with system preference detection
+- Loading skeletons for better UX
+- Toast notifications for feedback
+- SEO meta tags and OpenGraph support
+- Protected routes via Next.js middleware
+- Auto token refresh via Axios interceptor
 - Profile page with activity log and stats
 
 ---
@@ -93,7 +123,7 @@ A full-stack production-grade blog application built with **Node.js**, **Next.js
 ## 📁 Project Structure
 
 ```
-blogapp/
+pencraft/
 ├── backend/                      # Express REST API
 │   ├── src/
 │   │   ├── modules/
@@ -107,9 +137,8 @@ blogapp/
 │   ├── prisma/
 │   │   ├── schema.prisma         # Database schema
 │   │   └── migrations/           # Migration history
-│   ├── Dockerfile
-│   ├── docker-compose.yml
-│   └── vitest.config.ts
+│   ├── prisma.config.ts
+│   └── app.ts
 │
 └── frontend/                     # Next.js App
     ├── app/
@@ -131,7 +160,6 @@ blogapp/
 
 - Node.js 20+
 - PostgreSQL 16+
-- Docker (optional)
 
 ### Backend Setup
 
@@ -144,10 +172,10 @@ cp .env.example .env
 Fill in `.env`:
 
 ```env
-DATABASE_URL=postgresql://user:password@localhost:5432/blogapp
+DATABASE_URL=postgresql://user:password@localhost:5432/pencraft
 JWT_ACCESS_TOKEN_SECRET=your_secret
 JWT_REFRESH_TOKEN_SECRET=your_refresh_secret
-JWT_ACCESS_TOKEN_EXPIRES_IN=15m
+JWT_ACCESS_TOKEN_EXPIRES_IN=24h
 JWT_REFRESH_TOKEN_EXPIRES_IN=7d
 RESEND_API_KEY=your_resend_key
 FROM_EMAIL=onboarding@resend.dev
@@ -184,25 +212,60 @@ npm run dev
 
 ---
 
-## 🐳 Docker Setup
+## ☁️ Production Deployment
+
+### Backend (AWS EC2 + Nginx + SSL)
 
 ```bash
-cd backend
-docker-compose up --build
+# EC2 pe SSH karo
+ssh -i key.pem ubuntu@your-ec2-ip
+
+# Repo clone karo
+git clone https://github.com/moizmalik13588/blog-app.git
+cd blog-app/backend
+
+# Dependencies install karo
+npm install
+
+# Build karo
+npm run build
+cp -r generated dist/generated
+
+# PM2 se start karo
+pm2 start dist/index.js --name "pencraft-backend"
+pm2 startup
+pm2 save
+
+# Nginx + SSL setup
+sudo apt install nginx certbot python3-certbot-nginx
+sudo certbot --nginx -d api.yourdomain.com
 ```
 
-This will start:
-- **App** on port `5000`
-- **PostgreSQL** on port `5432`
+### Frontend (Vercel)
+
+1. GitHub repo connect karo Vercel pe
+2. Root Directory: `frontend` set karo
+3. Environment Variables add karo:
+   ```
+   NEXT_PUBLIC_API_URL=https://api.yourdomain.com
+   ```
+4. Deploy!
 
 ---
 
-## 🧪 Running Tests
+## 🔒 Security Highlights
 
-```bash
-cd backend
-npm test
-```
+| Feature                | Implementation                      |
+| ---------------------- | ----------------------------------- |
+| Password Storage       | bcrypt (10 rounds)                  |
+| Refresh Token Storage  | SHA256 hashed in DB                 |
+| OTP Storage            | SHA256 hashed in DB                 |
+| Cookie Security        | httpOnly + Secure + SameSite=None   |
+| Token Strategy         | Rotation + Reuse Detection          |
+| Brute Force Protection | Rate limiting (5 attempts / 15 min) |
+| XSS Protection         | httpOnly cookies                    |
+| CSRF Protection        | SameSite cookie policy              |
+| HTTPS                  | Let's Encrypt SSL                   |
 
 ---
 
@@ -214,20 +277,11 @@ After running the backend, visit:
 http://localhost:5000/api-docs
 ```
 
----
+Or in production:
 
-## 🔒 Security Highlights
-
-| Feature | Implementation |
-|---------|---------------|
-| Password Storage | bcrypt (10 rounds) |
-| Refresh Token Storage | SHA256 hashed in DB |
-| OTP Storage | SHA256 hashed in DB |
-| Cookie Security | httpOnly + Secure + SameSite |
-| Token Strategy | Rotation + Reuse Detection |
-| Brute Force | Rate limiting (5 attempts / 15 min) |
-| XSS | httpOnly cookies |
-| CSRF | SameSite cookie policy |
+```
+https://api.pencraft.site/api-docs
+```
 
 ---
 
@@ -241,4 +295,5 @@ MIT License — feel free to use this project for learning or building upon it.
 
 **Muhammad Moiz**  
 BSCS Student — Sindh Madressatul Islam University (SMIU), Karachi  
-GitHub: [@moizmalik13588](https://github.com/moizmalik13588)
+GitHub: [@moizmalik13588](https://github.com/moizmalik13588)  
+Live: [pencraft.site](https://pencraft.site)
