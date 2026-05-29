@@ -17,6 +17,9 @@ interface Post {
   imageUrl: string | null;
   userId: string;
   createdAt: string;
+  user: {
+    username: string;
+  };
 }
 
 interface Comment {
@@ -193,9 +196,29 @@ export default function PostDetailPage() {
         )}
 
         {/* Title */}
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
           {post.title}
         </h1>
+        {/* Author + Date */}
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+            <span className="text-white text-[12px] font-bold">
+              {post.user?.username?.[0]?.toUpperCase() || "U"}
+            </span>
+          </div>
+          <div>
+            <p className="text-[14px] font-medium text-gray-700 dark:text-gray-300">
+              {post.user?.username || "Unknown"}
+            </p>
+            <p className="text-[12px] text-gray-400 dark:text-gray-500">
+              {new Date(post.createdAt).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </p>
+          </div>
+        </div>
 
         {/* Content */}
         <p className="text-[16px] text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap mb-12">
