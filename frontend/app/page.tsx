@@ -164,9 +164,12 @@ export default async function HomePage() {
                       <div className="flex items-center gap-2">
                         <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
                           <span className="text-white text-[10px] font-bold">
-                            U
+                            {(post.user?.username?.[0] || "U").toUpperCase()}
                           </span>
                         </div>
+                        <span className="text-[12px] text-gray-400 dark:text-gray-500">
+                          {post.user?.username || "User"}
+                        </span>
 
                         <span className="text-[12px] text-gray-400 dark:text-gray-500">
                           {new Date(post.createdAt).toLocaleDateString(
