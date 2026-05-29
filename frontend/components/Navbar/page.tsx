@@ -96,7 +96,7 @@ export default function Navbar() {
           {user && (
             <Link
               href="/posts/create"
-              className="h-8 px-3 bg-blue-600 hover:bg-blue-700 text-white text-[12px] font-medium rounded-lg transition-colors flex items-center"
+              className="h-8 px-3 bg-blue-600 hover:bg-blue-700 text-white text-[12px] font-medium rounded-lg transition-colors flex items-center whitespace-nowrap"
             >
               New Post
             </Link>
