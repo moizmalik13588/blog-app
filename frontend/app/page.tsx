@@ -268,18 +268,16 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center">
-              <span className="font-semibold text-gray-900 dark:text-white text-[14px]">
-                PenCraft
-              </span>
+              <span className="text-white font-bold text-[10px]">P</span>
             </div>
 
             <span className="font-semibold text-gray-900 dark:text-white text-[14px]">
-              BlogApp
+              PenCraft
             </span>
           </div>
 
           <p className="text-[13px] text-gray-400 dark:text-gray-500">
-            © 2026 BlogApp. All rights reserved.
+            © 2026 PenCraft. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
