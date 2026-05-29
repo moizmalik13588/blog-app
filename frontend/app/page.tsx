@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import HomeNavbar from "@/components/HomeNavbar";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getRecentPosts() {
   try {
@@ -17,6 +18,7 @@ async function getRecentPosts() {
 }
 
 export default async function HomePage() {
+  noStore();
   const posts = await getRecentPosts();
   const cookieStore = await cookies();
   const isLoggedIn = !!cookieStore.get("accessToken")?.value;
