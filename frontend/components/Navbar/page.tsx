@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
 import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
-  const router = useRouter();
   const { user } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -24,7 +22,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
           <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center">
             <span className="text-white font-bold text-xs">B</span>
           </div>
@@ -33,7 +31,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Links — Desktop */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
           <Link
             href="/posts"
@@ -55,55 +53,62 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Right */}
-        <div className="hidden md:flex items-center gap-3">
-          {/* Theme Toggle */}
+        {/* Desktop Right */}
+        <div className="hidden md:flex items-center gap-3 shrink-0">
           <ThemeToggle />
-
-          {/* Avatar */}
-          <Link
-            href="/profile"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-          >
-            <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-[11px]">
-                {user?.username?.[0]?.toUpperCase() || "U"}
-              </span>
-            </div>
-            <span className="text-[14px] font-medium text-gray-700 dark:text-gray-300">
-              {user?.username || "User"}
-            </span>
-          </Link>
-
-          <Link
-            href="/posts/create"
-            className="h-8 px-4 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-medium rounded-lg transition-colors flex items-center"
-          >
-            New Post
-          </Link>
-
-          <button
-            onClick={handleLogout}
-            className="h-8 px-4 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-600 dark:text-gray-300 text-[13px] font-medium rounded-lg transition-colors"
-          >
-            Logout
-          </button>
+          {user ? (
+            <>
+              <Link
+                href="/profile"
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center">
+                  <span className="text-white font-bold text-[11px]">
+                    {user.username?.[0]?.toUpperCase()}
+                  </span>
+                </div>
+                <span className="text-[14px] font-medium text-gray-700 dark:text-gray-300">
+                  {user.username}
+                </span>
+              </Link>
+              <Link
+                href="/posts/create"
+                className="h-8 px-4 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-medium rounded-lg transition-colors flex items-center whitespace-nowrap"
+              >
+                New Post
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="h-8 px-4 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-600 dark:text-gray-300 text-[13px] font-medium rounded-lg transition-colors whitespace-nowrap"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="h-8 px-4 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-[13px] font-medium rounded-lg transition-colors flex items-center"
+              >
+                Sign in
+              </Link>
+              <Link
+                href="/register"
+                className="h-8 px-4 bg-blue-600 hover:bg-blue-700 text-white text-[13px] font-medium rounded-lg transition-colors flex items-center"
+              >
+                Get started
+              </Link>
+            </>
+          )}
         </div>
 
-        {/* Mobile right */}
-        <div className="md:hidden flex items-center gap-2">
+        {/* Mobile Right */}
+        <div className="md:hidden flex items-center gap-2 shrink-0">
           <ThemeToggle />
-          {user && (
-            <Link
-              href="/posts/create"
-              className="h-8 px-3 bg-blue-600 hover:bg-blue-700 text-white text-[12px] font-medium rounded-lg transition-colors flex items-center whitespace-nowrap"
-            >
-              New Post
-            </Link>
-          )}
           <button
-            className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
             onClick={() => setMenuOpen(!menuOpen)}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            aria-label="Toggle menu"
           >
             <svg
               className="w-5 h-5 text-gray-600 dark:text-gray-400"
@@ -124,37 +129,97 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-950 px-4 py-3 space-y-1">
-          <div className="flex items-center gap-2 py-2 border-b border-gray-100 dark:border-gray-800 mb-2">
-            <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-[11px]">
-                {user?.username?.[0]?.toUpperCase() || "U"}
+        <div className="md:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-950">
+          <div className="px-4 py-3 space-y-1">
+            {user && (
+              <div className="flex items-center gap-3 py-3 border-b border-gray-100 dark:border-gray-800 mb-2">
+                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0">
+                  <span className="text-white font-bold text-[12px]">
+                    {user.username?.[0]?.toUpperCase()}
+                  </span>
+                </div>
+                <div>
+                  <p className="text-[14px] font-medium text-gray-900 dark:text-white">
+                    {user.username}
+                  </p>
+                  <p className="text-[12px] text-gray-500 dark:text-gray-400">
+                    View profile
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <Link
+              href="/posts"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+            >
+              <span className="text-[14px] text-gray-700 dark:text-gray-300">
+                Browse
               </span>
+            </Link>
+
+            {user && (
+              <Link
+                href="/posts/create"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+              >
+                <span className="text-[14px] text-gray-700 dark:text-gray-300">
+                  Write
+                </span>
+              </Link>
+            )}
+
+            <Link
+              href="/profile"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
+            >
+              <span className="text-[14px] text-gray-700 dark:text-gray-300">
+                Profile
+              </span>
+            </Link>
+
+            <div className="pt-2 mt-2 border-t border-gray-100 dark:border-gray-800 space-y-2">
+              {user ? (
+                <>
+                  <Link
+                    href="/posts/create"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center w-full h-10 bg-blue-600 hover:bg-blue-700 text-white text-[14px] font-medium rounded-lg transition-colors"
+                  >
+                    New Post
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center justify-center w-full h-10 border border-gray-200 dark:border-gray-700 text-red-500 text-[14px] font-medium rounded-lg transition-colors hover:bg-red-50 dark:hover:bg-red-950"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center w-full h-10 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-[14px] font-medium rounded-lg transition-colors"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    href="/register"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center w-full h-10 bg-blue-600 hover:bg-blue-700 text-white text-[14px] font-medium rounded-lg transition-colors"
+                  >
+                    Get started
+                  </Link>
+                </>
+              )}
             </div>
-            <span className="text-[14px] font-medium text-gray-700 dark:text-gray-300">
-              {user?.username || "User"}
-            </span>
           </div>
-          <Link
-            href="/posts"
-            className="block text-[14px] text-gray-600 dark:text-gray-400 py-2"
-          >
-            Browse
-          </Link>
-          <Link
-            href="/posts/create"
-            className="block text-[14px] text-gray-600 dark:text-gray-400 py-2"
-          >
-            Write
-          </Link>
-          <button
-            onClick={handleLogout}
-            className="block text-[14px] text-red-500 py-2 w-full text-left"
-          >
-            Logout
-          </button>
         </div>
       )}
     </nav>
