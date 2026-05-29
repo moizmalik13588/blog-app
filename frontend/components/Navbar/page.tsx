@@ -149,12 +149,6 @@ export default function Navbar() {
           >
             Write
           </Link>
-          <Link
-            href="/profile"
-            className="block text-[14px] text-gray-600 dark:text-gray-400 py-2"
-          >
-            Profile
-          </Link>
           <button
             onClick={handleLogout}
             className="block text-[14px] text-red-500 py-2 w-full text-left"
