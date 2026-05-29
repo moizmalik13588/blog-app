@@ -6,6 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20-green?style=flat-square&logo=node.js)](https://nodejs.org/)
+[![Tests](https://img.shields.io/badge/Tests-5%20passing-brightgreen?style=flat-square)](https://github.com/moizmalik13588/blog-app)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 ---
@@ -58,6 +59,7 @@ User
 | Swagger UI             | API Documentation           |
 | Zod                    | Request Validation          |
 | express-rate-limit     | Rate Limiting               |
+| Vitest                 | Unit Testing                |
 | PM2                    | Process Management          |
 
 ### Frontend
@@ -208,6 +210,30 @@ NEXT_PUBLIC_API_URL=http://localhost:5000
 
 ```bash
 npm run dev
+```
+
+---
+
+## 🧪 Running Tests
+
+```bash
+cd backend
+npm test
+```
+
+```
+✓ AuthService (5)
+  ✓ registerUser (2)
+    ✓ should throw error if username already exists
+    ✓ should throw error if email already exists
+  ✓ loginUser (2)
+    ✓ should throw error if user not found
+    ✓ should throw error if password is wrong
+  ✓ logout (1)
+    ✓ should throw error if refresh token not found
+
+Test Files  1 passed (1)
+Tests       5 passed (5)
 ```
 
 ---
