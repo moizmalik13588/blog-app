@@ -30,10 +30,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center">
-            <span className="text-white font-bold text-xs">B</span>
+            <span className="text-white font-bold text-xs">P</span>
           </div>
           <span className="font-semibold text-gray-900 dark:text-white text-[15px]">
-            BlogApp
+            PenCraft
           </span>
         </Link>
 

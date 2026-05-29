@@ -13,36 +13,36 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "BlogApp — Share your ideas with the world",
-    template: "%s | BlogApp",
+    default: "PenCraft — Share your ideas with the world",
+    template: "%s | PenCraft",
   },
   description:
-    "BlogApp is the simplest way to write, publish, and grow your audience. Join 10,000+ writers today.",
+    "PenCraft is the simplest way to write, publish, and grow your audience. Join 10,000+ writers today.",
   keywords: ["blog", "writing", "publish", "stories", "articles"],
-  authors: [{ name: "BlogApp" }],
-  creator: "BlogApp",
+  authors: [{ name: "PenCraft" }],
+  creator: "PenCraft",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://blogapp.vercel.app",
-    siteName: "BlogApp",
-    title: "BlogApp — Share your ideas with the world",
+    url: "https://pencraft.site",
+    siteName: "PenCraft",
+    title: "PenCraft — Share your ideas with the world",
     description:
-      "BlogApp is the simplest way to write, publish, and grow your audience.",
+      "PenCraft is the simplest way to write, publish, and grow your audience.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "BlogApp",
+        alt: "PenCraft",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BlogApp — Share your ideas with the world",
+    title: "PenCraft — Share your ideas with the world",
     description:
-      "BlogApp is the simplest way to write, publish, and grow your audience.",
+      "PenCraft is the simplest way to write, publish, and grow your audience.",
     images: ["/og-image.png"],
   },
   robots: {
