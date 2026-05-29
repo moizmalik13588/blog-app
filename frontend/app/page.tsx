@@ -45,19 +45,18 @@ export default async function HomePage() {
           Start for free today.
         </p>
 
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-3 flex-wrap">
           {isLoggedIn ? (
             <>
               <Link
                 href="/posts/create"
-                className="h-11 px-6 bg-blue-600 hover:bg-blue-700 text-white text-[15px] font-medium rounded-xl transition-colors flex items-center gap-2 shadow-md shadow-blue-200 dark:shadow-blue-900/30"
+                className="h-11 px-6 bg-blue-600 hover:bg-blue-700 text-white text-[15px] font-medium rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap"
               >
                 Write a post
               </Link>
-
               <Link
                 href="/posts"
-                className="h-11 px-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 text-[15px] font-medium rounded-xl transition-colors flex items-center"
+                className="h-11 px-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 text-[15px] font-medium rounded-xl transition-colors flex items-center whitespace-nowrap"
               >
                 Browse posts
               </Link>
@@ -66,14 +65,13 @@ export default async function HomePage() {
             <>
               <Link
                 href="/register"
-                className="h-11 px-6 bg-blue-600 hover:bg-blue-700 text-white text-[15px] font-medium rounded-xl transition-colors flex items-center gap-2 shadow-md shadow-blue-200 dark:shadow-blue-900/30"
+                className="h-11 px-6 bg-blue-600 hover:bg-blue-700 text-white text-[15px] font-medium rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap"
               >
                 Start writing free
               </Link>
-
               <Link
                 href="/posts"
-                className="h-11 px-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 text-[15px] font-medium rounded-xl transition-colors flex items-center"
+                className="h-11 px-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-700 dark:text-gray-300 text-[15px] font-medium rounded-xl transition-colors flex items-center whitespace-nowrap"
               >
                 Browse posts
               </Link>
