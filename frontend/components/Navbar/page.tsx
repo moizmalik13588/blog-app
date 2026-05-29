@@ -14,7 +14,13 @@ export default function Navbar() {
     try {
       await api.post("/api/v1/auth/logout");
     } catch {}
-    await fetch("/api/logout", { method: "POST" });
+    try {
+      await fetch("/api/logout", { method: "POST" });
+    } catch {}
+    document.cookie =
+      "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.pencraft.site;";
+    document.cookie =
+      "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.pencraft.site;";
     window.location.replace("/");
   };
 
