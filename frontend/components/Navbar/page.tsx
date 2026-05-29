@@ -93,6 +93,14 @@ export default function Navbar() {
         {/* Mobile right */}
         <div className="md:hidden flex items-center gap-2">
           <ThemeToggle />
+          {user && (
+            <Link
+              href="/posts/create"
+              className="h-8 px-3 bg-blue-600 hover:bg-blue-700 text-white text-[12px] font-medium rounded-lg transition-colors flex items-center"
+            >
+              New Post
+            </Link>
+          )}
           <button
             className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
             onClick={() => setMenuOpen(!menuOpen)}
