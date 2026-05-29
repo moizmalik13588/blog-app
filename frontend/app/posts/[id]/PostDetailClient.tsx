@@ -215,7 +215,9 @@ export default function PostDetailPage() {
           <form onSubmit={handleComment} className="mb-8">
             <div className="flex gap-3">
               <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mt-1">
-                <span className="text-white text-[12px] font-bold">U</span>
+                <span className="text-white text-[12px] font-bold">
+                  {user?.username?.[0]?.toUpperCase() || "U"}
+                </span>
               </div>
 
               <div className="flex-1">
