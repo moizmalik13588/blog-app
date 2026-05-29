@@ -179,7 +179,7 @@ export default function PostDetailPage() {
 
         {/* Image */}
         {post.imageUrl && (
-          <div className="relative w-full h-[400px] rounded-2xl overflow-hidden mb-8 bg-gray-100 dark:bg-gray-900">
+          <div className="relative w-full h-[200px] sm:h-[400px] rounded-2xl overflow-hidden mb-8 bg-gray-100 dark:bg-gray-900">
             <Image
               src={post.imageUrl}
               alt={post.title}
